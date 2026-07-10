@@ -3,31 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roll the Unknown</title>
+<title>SkyPort — Airport Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Navbar has its own stylesheet, kept separate on purpose -->
+<link rel="stylesheet" href="navbar.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <p class="eyebrow">Odds: 1 in 6</p>
-  <h1>Roll the Unknown</h1>
-  <p class="subtitle">A small machine for chance. Click the die. Get something you didn't ask for.</p>
+  <!-- Navbar gets injected here at runtime, see script.js -->
+  <div id="navbar-container"></div>
 
-  <button id="die" aria-label="Roll the die">
-    <span class="pip" data-pip="1"></span><span class="pip" data-pip="2"></span><span class="pip" data-pip="3"></span>
-    <span class="pip" data-pip="4"></span><span class="pip" data-pip="5"></span><span class="pip" data-pip="6"></span>
-    <span class="pip" data-pip="7"></span><span class="pip" data-pip="8"></span><span class="pip" data-pip="9"></span>
-  </button>
-  <p class="hint">CLICK TO ROLL</p>
+  <div class="app-shell">
 
-  <div id="card">
-    <div id="fact-number">ROLL —</div>
-    <div id="fact">Waiting for your first roll.</div>
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+      <h1 class="topbar-title">Dashboard Overview</h1>
+      <div class="topbar-clock" id="liveClock">--:--:--</div>
+    </header>
+
+    <main class="content">
+
+      <section class="hero">
+        <div class="hero-text">
+          <p class="hero-eyebrow">SkyPort Control Center</p>
+          <h2>A calm view over a busy sky.</h2>
+          <p class="hero-sub">Live snapshot of flights, gates, and passengers moving through the airport right now.</p>
+        </div>
+        <div class="hero-clouds" aria-hidden="true">
+          <span class="cloud c1"></span>
+          <span class="cloud c2"></span>
+          <span class="cloud c3"></span>
+        </div>
+      </section>
+
+      <section class="stat-grid">
+        <div class="stat-card" id="total-flights">
+          <span class="stat-icon">✈️</span>
+          <p class="stat-label">Total Flights</p>
+          <p class="stat-value">248</p>
+        </div>
+        <div class="stat-card warn" id="delayed-flights">
+          <span class="stat-icon">⏳</span>
+          <p class="stat-label">Delayed Flights</p>
+          <p class="stat-value">17</p>
+        </div>
+        <div class="stat-card good" id="ontime-flights">
+          <span class="stat-icon">✅</span>
+          <p class="stat-label">On-Time Flights</p>
+          <p class="stat-value">231</p>
+        </div>
+        <div class="stat-card" id="active-gates">
+          <span class="stat-icon">🛫</span>
+          <p class="stat-label">Active Gates</p>
+          <p class="stat-value">34 / 40</p>
+        </div>
+        <div class="stat-card" id="passenger-count">
+          <span class="stat-icon">🧍</span>
+          <p class="stat-label">Passenger Count</p>
+          <p class="stat-value">18,420</p>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+
+        <div class="panel wide" id="today-schedule">
+          <div class="panel-head">
+            <h3>Today's Departures &amp; Arrivals</h3>
+            <span class="panel-tag">Live</span>
+          </div>
+          <table class="flight-table">
+            <thead>
+              <tr>
+                <th>Flight</th>
+                <th>Route</th>
+                <th>Gate</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SP 204</td>
+                <td>DAC → DXB</td>
+                <td>A12</td>
+                <td>14:20</td>
+                <td><span class="badge good">On Time</span></td>
+              </tr>
+              <tr>
+                <td>SP 118</td>
+                <td>CGP → DAC</td>
+                <td>B04</td>
+                <td>14:45</td>
+                <td><span class="badge warn">Delayed 20m</span></td>
+              </tr>
+              <tr>
+                <td>SP 331</td>
+                <td>DAC → LHR</td>
+                <td>C09</td>
+                <td>15:05</td>
+                <td><span class="badge good">Boarding</span></td>
+              </tr>
+              <tr>
+                <td>SP 077</td>
+                <td>SYL → DAC</td>
+                <td>A03</td>
+                <td>15:30</td>
+                <td><span class="badge neutral">Scheduled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel" id="weather-widget">
+          <div class="panel-head">
+            <h3>Weather Widget</h3>
+            <span class="panel-tag">Now</span>
+          </div>
+          <div class="weather-body">
+            <span class="weather-icon">⛅</span>
+            <p class="weather-temp">29°C</p>
+            <p class="weather-desc">Partly cloudy, light breeze</p>
+            <div class="weather-meta">
+              <span>Visibility: 9 km</span>
+              <span>Wind: 12 km/h NE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="recent-alerts">
+          <div class="panel-head">
+            <h3>Recent Alerts</h3>
+            <span class="panel-tag alert">3 New</span>
+          </div>
+          <ul class="alert-list">
+            <li><span class="dot warn"></span> Gate B04 delayed due to late arrival</li>
+            <li><span class="dot info"></span> Runway 2 scheduled maintenance, 22:00</li>
+            <li><span class="dot danger"></span> Low visibility expected after 18:00</li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
   </div>
 
-  <footer>refresh for a new set of odds</footer>
-
+  <!-- navbar.js must load before script.js calls initNavbar() -->
+  <script src="navbar.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
