@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Project</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roll the Unknown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Hello World</h1>
-    <h2>hello Sumu</h2>
-    <button id="btn">Click Me</button>
+  <p class="eyebrow">Odds: 1 in 6</p>
+  <h1>Roll the Unknown</h1>
+  <p class="subtitle">A small machine for chance. Click the die. Get something you didn't ask for.</p>
 
-    <script src="script.js"></script>
+  <button id="die" aria-label="Roll the die">
+    <span class="pip" data-pip="1"></span><span class="pip" data-pip="2"></span><span class="pip" data-pip="3"></span>
+    <span class="pip" data-pip="4"></span><span class="pip" data-pip="5"></span><span class="pip" data-pip="6"></span>
+    <span class="pip" data-pip="7"></span><span class="pip" data-pip="8"></span><span class="pip" data-pip="9"></span>
+  </button>
+  <p class="hint">CLICK TO ROLL</p>
+
+  <div id="card">
+    <div id="fact-number">ROLL —</div>
+    <div id="fact">Waiting for your first roll.</div>
+  </div>
+
+  <footer>refresh for a new set of odds</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
