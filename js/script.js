@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch((err) => {
         console.error('Could not load navbar:', err);
-        container.innerHTML = '<p style="padding:1rem;color:#d9635b;">Navbar failed to load. Serve this project through a local server.</p>';
+        container.innerHTML = '<p style="padding:1rem;color:#d9635b;">Navbar faaaailed to load. Serve this project through a local server.</p>';
       });
   }
 
