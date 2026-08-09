@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SkyFlow Airport — Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
+
+</head><body><!-- Animated Sky Background -->
+<div class="sky-background">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+</div>
+
+<!-- Navbar / Sidebar -->
+<div id="navbar-container"></div>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <section class="page-header">
+        <div>
+            <p class="welcome-text">Welcome back</p>
+            <h1>Airport Dashboard</h1>
+            <p class="page-subtitle">
+                Here's what's happening at the airport today.
+            </p>
+        </div>
+
+        <div class="current-date" id="currentDate"></div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">✈️</div>
+            <div>
+                <p>Total Flights</p>
+                <h2>128</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div>
+                <p>Delayed Flights</p>
+                <h2>12</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">✓</div>
+            <div>
+                <p>On-Time Flights</p>
+                <h2>116</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🚪</div>
+            <div>
+                <p>Active Gates</p>
+                <h2>24</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div>
+                <p>Passengers</p>
+                <h2>8,492</h2>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-grid">
+
+        <!-- Today's Flights -->
+        <div class="dashboard-card flights-card">
+
+            <div class="card-header">
+                <div>
+                    <h3>Today's Departures & Arrivals</h3>
+                    <p>Latest airport flight activity</p>
+                </div>
+
+                <button class="view-btn">View All</button>
+            </div>
+
+            <div class="flight-list">
+
+                <div class="flight-item">
+                    <div class="flight-time">
+                        <strong>10:30</strong>
+                        <span>Departure</span>
+                    </div>
+
+                    <div class="flight-info">
+                        <strong>BG 305</strong>
+                        <span>Dhaka → Dubai</span>
+                    </div>
+
+                    <span class="status on-time">On Time</span>
+                </div>
+
+                <div class="flight-item">
+                    <div class="flight-time">
+                        <strong>11:15</strong>
+                        <span>Arrival</span>
+                    </div>
+
+                    <div class="flight-info">
+                        <strong>EK 582</strong>
+                        <span>Dubai → Dhaka</span>
+                    </div>
+
+                    <span class="status on-time">On Time</span>
+                </div>
+
+                <div class="flight-item">
+                    <div class="flight-time">
+                        <strong>12:40</strong>
+                        <span>Departure</span>
+                    </div>
+
+                    <div class="flight-info">
+                        <strong>QR 641</strong>
+                        <span>Dhaka → Doha</span>
+                    </div>
+
+                    <span class="status delayed">Delayed</span>
+                </div>
+
+                <div class="flight-item">
+                    <div class="flight-time">
+                        <strong>13:20</strong>
+                        <span>Arrival</span>
+                    </div>
+
+                    <div class="flight-info">
+                        <strong>TK 713</strong>
+                        <span>Istanbul → Dhaka</span>
+                    </div>
+
+                    <span class="status on-time">On Time</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Weather -->
+        <div class="dashboard-card weather-card">
+
+            <div class="card-header">
+                <div>
+                    <h3>Weather</h3>
+                    <p>Current airport conditions</p>
+                </div>
+                <span class="weather-icon">☀️</span>
+            </div>
+
+            <div class="weather-main">
+                <strong>29°</strong>
+                <span>Clear Sky</span>
+            </div>
+
+            <div class="weather-details">
+                <div>
+                    <span>💧</span>
+                    <p>Humidity</p>
+                    <strong>72%</strong>
+                </div>
+
+                <div>
+                    <span>💨</span>
+                    <p>Wind</p>
+                    <strong>12 km/h</strong>
+                </div>
+
+                <div>
+                    <span>👁️</span>
+                    <p>Visibility</p>
+                    <strong>8 km</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="dashboard-card alerts-card">
+
+            <div class="card-header">
+                <div>
+                    <h3>Recent Alerts</h3>
+                    <p>Latest airport notifications</p>
+                </div>
+
+                <button class="view-btn">View All</button>
+            </div>
+
+            <div class="alert-list">
+
+                <div class="alert-item warning">
+                    <span class="alert-icon">⚠️</span>
+                    <div>
+                        <strong>Flight BG 305 delayed</strong>
+                        <p>Expected departure delayed by 20 minutes.</p>
+                    </div>
+                </div>
+
+                <div class="alert-item info">
+                    <span class="alert-icon">ℹ️</span>
+                    <div>
+                        <strong>Gate A12 assigned</strong>
+                        <p>Gate A12 is now assigned to flight EK 582.</p>
+                    </div>
+                </div>
+
+                <div class="alert-item success">
+                    <span class="alert-icon">✓</span>
+                    <div>
+                        <strong>Runway inspection completed</strong>
+                        <p>Runway 02 is operational.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="js/navbar.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
