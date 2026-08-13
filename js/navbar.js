@@ -1,24 +1,33 @@
-fetch("navbar.html")
-.then(response => response.text())
-.then(data => {
+fetch("./components/navbar.html")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Navbar file could not be loaded");
+        }
 
-    document.getElementById("navbar-container").innerHTML = data;
+        return response.text();
+    })
+    .then(html => {
+        const container = document.getElementById("navbar-container");
 
-    const menuButton =
-        document.getElementById("mobileMenuBtn");
+        if (container) {
+            container.innerHTML = html;
+        }
 
-    const sidebar =
-        document.getElementById("sidebar");
+        const menuButton = document.getElementById("mobileMenuBtn");
+        const sidebar = document.getElementById("sidebar");
 
-    if (menuButton && sidebar) {
+        if (menuButton && sidebar) {
+            menuButton.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+            });
+        }
+    })
+    .catch(error => {
+        console.error("Navbar Error:", error);
 
-        menuButton.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-        });
+        const container = document.getElementById("navbar-container");
 
-    }
-
-})
-.catch(error => {
-    console.error("Navbar loading failed:", error);
-});
+        if (container) {
+            container.innerHTML = "";
+        }
+    });
